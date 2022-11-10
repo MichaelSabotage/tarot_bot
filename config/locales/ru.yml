@@ -1,0 +1,10 @@
+ru:
+  telegram_webhooks:
+    action_missing:
+      command: |
+        Невозможно выполнить команду %{command}
+        Для получения списка доступных команд отправьте /help
+    help:
+      content: |
+        Доступные команды:
+        /start - Начать работу с ботом

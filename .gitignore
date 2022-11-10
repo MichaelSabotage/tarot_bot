@@ -37,3 +37,7 @@
 # Ignore vs code files
 .vscode/
 
+
+/config/credentials/development.key
+
+/config/credentials/production.key
