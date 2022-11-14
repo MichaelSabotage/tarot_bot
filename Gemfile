@@ -7,6 +7,8 @@ gem "rails", "~> 7.0.4"
 
 gem "telegram-bot"
 
+gem "date_validator"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
