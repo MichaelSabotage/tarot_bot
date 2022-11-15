@@ -1,6 +1,9 @@
 class TelegramWebhooksController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
   include UsersController
+  include AreasController
+  include TopicsController
+  include ReadingsController
 
   before_action :current_user
 

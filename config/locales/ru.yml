@@ -10,6 +10,7 @@ ru:
       content: |
         Доступные команды:
         /start - Начать работу с ботом
+        /areas_list - Список раскладов
     inline_keyboard:
       alert: Answer with alert
       no_alert: Without alert

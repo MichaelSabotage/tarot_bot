@@ -60,7 +60,7 @@ module UsersController
       end
     else
       save_context :birth_date!
-      respond_with :message, text: "Укажите свою дату рождения в формате ДД.ММ.ГГГГ"
+      respond_with :message, text: "Укажите свою дату рождения в формате ДД.ММ.ГГГГ, вам должно быть больше 18 лет"
     end
   end
 
@@ -74,12 +74,12 @@ module UsersController
       end
     else
       save_context :profession!
-      respond_with :message, text: "Кратко опишите свой род деятельности"
+      respond_with :message, text: "Кем вы работаете?"
     end
   end
 
   def family_status!(family_status = nil, *)
-    keyboard = [["Один/Одна"],
+    keyboard = [["Свободен/Свободна"],
                 ["Отношения"],
                 ["Брак"],
                 ["Развод"],
@@ -105,7 +105,8 @@ module UsersController
                 ["3+"]]
     if keyboard.include?([children_count])
       @current_user.update(children_count: children_count)
-      respond_with :message, text: "Спасибо, на этом всё, ваши данные сохранены, теперь вы можете сделать заказ"
+      respond_with :message,
+                   text: "Спасибо, на этом всё, ваши данные сохранены, теперь вы можете сделать заказ (в разработке)"
     else
       save_context :children_count!
       respond_with :message, text: "Сколько у вас детей?", reply_markup: {

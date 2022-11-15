@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  validates :first_name, presence: true, length: {minimum: 2}
+  validates :first_name, presence: true
   validates :phone, presence: true, length: {is: 12}, allow_nil: true
   validates :birth_date, allow_nil: true, date: {after: proc { 100.years.ago },
-                                                 before: proc { 14.years.ago }}
+                                                 before: proc { 18.years.ago }}
   validates :profession, presence: true, allow_nil: true
 
   def filled?
