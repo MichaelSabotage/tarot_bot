@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :orders, dependent: :destroy
+
   validates :first_name, presence: true
   validates :phone, presence: true, length: {is: 12}, allow_nil: true
   validates :birth_date, allow_nil: true, date: {after: proc { 100.years.ago },

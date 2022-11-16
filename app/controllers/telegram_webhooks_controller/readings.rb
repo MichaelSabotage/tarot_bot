@@ -1,6 +1,4 @@
-module ReadingsController
-  include Telegram::Bot::UpdatesController::CallbackQueryContext
-
+module TelegramWebhooksController::Readings
   def select_topic_callback_query(id = nil, *)
     respond_with :message, text: "Список раскладов:"
     Reading.where(topic_id: id).each do |reading|
@@ -8,7 +6,7 @@ module ReadingsController
         inline_keyboard: [
           [
             {text: "Подробнее", callback_data: "reading_description: #{reading.id}"},
-            {text: "Сделать заказ", callback_data: "make_an_order: #{reading.id}, #{@current_user.id}"}
+            {text: "Сделать заказ", callback_data: "make_an_order: #{reading.id}"}
           ],
           [
             {text: "Назад", callback_data: "select_area: #{reading.topic.area_id}"}
@@ -26,13 +24,9 @@ module ReadingsController
       inline_keyboard: [
         [
           {text: "Назад", callback_data: "select_topic: #{reading.topic_id}"},
-          {text: "Сделать заказ", callback_data: "make_an_order: #{reading.id}, #{@current_user.id}"}
+          {text: "Сделать заказ", callback_data: "make_an_order: #{reading.id}"}
         ]
       ]
     }
-  end
-
-  def make_an_order_callback_query(*)
-    respond_with :message, text: "В разработке"
   end
 end

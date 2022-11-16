@@ -1,6 +1,4 @@
-module TopicsController
-  include Telegram::Bot::UpdatesController::CallbackQueryContext
-
+module TelegramWebhooksController::Topics
   def select_area_callback_query(id = nil, *)
     respond_with :message, text: "Выберете тему:"
     Topic.where(area_id: id).each do |topic|

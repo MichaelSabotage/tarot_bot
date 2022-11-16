@@ -1,9 +1,12 @@
 class TelegramWebhooksController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
-  include UsersController
-  include AreasController
-  include TopicsController
-  include ReadingsController
+  include Telegram::Bot::UpdatesController::CallbackQueryContext
+  include Telegram::Bot::UpdatesController::Session
+  include TelegramWebhooksController::Users
+  include TelegramWebhooksController::Areas
+  include TelegramWebhooksController::Topics
+  include TelegramWebhooksController::Readings
+  include TelegramWebhooksController::Orders
 
   before_action :current_user
 
@@ -51,7 +54,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
 
   def keyboard!(value = nil, *)
     if value
-      respond_with :message, text: t(".selected", value: value)
+      respond_with :message, text: t(".selected", value: value), reply_markup: {remove_keyboard: true}
     else
       save_context :keyboard!
       respond_with :message, text: t(".prompt"), reply_markup: {

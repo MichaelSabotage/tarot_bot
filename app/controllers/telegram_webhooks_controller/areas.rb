@@ -1,6 +1,4 @@
-module AreasController
-  include Telegram::Bot::UpdatesController::CallbackQueryContext
-
+module TelegramWebhooksController::Areas
   def areas_list!(*)
     respond_with :message, text: "Выберете область:"
     Area.all.each do |area|
